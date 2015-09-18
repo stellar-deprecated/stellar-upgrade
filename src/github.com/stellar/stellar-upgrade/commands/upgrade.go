@@ -24,7 +24,7 @@ type Message struct {
 var upgrade = &cobra.Command{
 	Use:   "upgrade",
 	Short: "Upgrade stellars to XLMs",
-	Long: "TODO",
+	Long:  "TODO",
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Printf("Enter your %s account %s: ", Cyan("old network"), Cyan("secret seed"))
 		var oldNetworkSeed string
@@ -36,7 +36,7 @@ var upgrade = &cobra.Command{
 			return
 		}
 		var rawSeed stellarbase.RawSeed
-		copy(rawSeed[:], oldNetworkSeedRaw[1 : len(oldNetworkSeedRaw)-2]) // Payload
+		copy(rawSeed[:], oldNetworkSeedRaw[1:len(oldNetworkSeedRaw)-2]) // Payload
 
 		publicKey, privateKey, err := stellarbase.GenerateKeyFromRawSeed(rawSeed)
 		if err != nil {
@@ -76,7 +76,7 @@ var upgrade = &cobra.Command{
 		signatureBase64 := base64.StdEncoding.EncodeToString(signatureBytes)
 
 		message := Message{
-			Data: string(dataJson),
+			Data:      string(dataJson),
 			PublicKey: publicKeyBase64,
 			Signature: signatureBase64,
 		}
@@ -91,7 +91,7 @@ var upgrade = &cobra.Command{
 			fmt.Println(err)
 			return
 		}
-		
+
 		if response.Status == "success" {
 			fmt.Printf("%s Your XLM should arrive soon.\n", Green("Success!"))
 		} else {

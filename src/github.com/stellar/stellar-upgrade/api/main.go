@@ -11,19 +11,19 @@ import (
 const base = "http://localhost:3001"
 
 type UpgradeResponse struct {
-    Status string
-    Code string
-    Message string
+	Status  string
+	Code    string
+	Message string
 }
 
 type StatusResponse struct {
-    OldAddress string
-    Claimed bool
-    Upgraded bool
+	OldAddress string
+	Claimed    bool
+	Upgraded   bool
 }
 
 func SendUpgradeRequest(requestJson []byte) (*UpgradeResponse, error) {
-	url := base+"/upgrade/upgrade"
+	url := base + "/upgrade/upgrade"
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(requestJson))
 	req.Header.Set("Content-Type", "application/json")
 
@@ -41,12 +41,12 @@ func SendUpgradeRequest(requestJson []byte) (*UpgradeResponse, error) {
 }
 
 func SendStatusRequest(address string) (*StatusResponse, error) {
-	url := base+"/upgrade/balance"
+	url := base + "/upgrade/balance"
 	req, err := http.NewRequest("GET", url, nil)
 
 	q := req.URL.Query()
-    q.Add("address", address)
-    req.URL.RawQuery = q.Encode()
+	q.Add("address", address)
+	req.URL.RawQuery = q.Encode()
 
 	client := &http.Client{}
 	resp, err := client.Do(req)

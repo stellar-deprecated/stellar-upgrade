@@ -11,7 +11,7 @@ import (
 var status = &cobra.Command{
 	Use:   "status [address]",
 	Short: "Displays your account upgrade status",
-	Long: "TODO",
+	Long:  "TODO",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 0 {
 			fmt.Println("[address] parameter is required.")
@@ -29,7 +29,7 @@ var status = &cobra.Command{
 			fmt.Println(err)
 			return
 		}
-		fmt.Println("Address: "+response.OldAddress)
+		fmt.Println("Address: " + response.OldAddress)
 		fmt.Print("Claimed: ")
 		if response.Claimed {
 			fmt.Printf("%s\n", Green("Yes"))
