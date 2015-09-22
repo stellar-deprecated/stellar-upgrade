@@ -2,13 +2,25 @@ package api
 
 import (
 	"bytes"
+	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/stellar/go-stellar-base"
+	"github.com/spf13/viper"
 )
 
-const base = "http://localhost:3001"
+type MessageData struct {
+	NewAddress string `json:"newAddress"`
+}
+
+type Message struct {
+	Data      string `json:"data"`
+	PublicKey string `json:"publicKey"`
+	Signature string `json:"signature"`
+}
 
 type UpgradeResponse struct {
 	Status  string
@@ -22,8 +34,36 @@ type StatusResponse struct {
 	Upgraded   bool
 }
 
-func SendUpgradeRequest(requestJson []byte) (*UpgradeResponse, error) {
-	url := base + "/upgrade/upgrade"
+type NetworkApi interface {
+	SendUpgradeRequest(data MessageData, publicKey stellarbase.PublicKey, privateKey stellarbase.PrivateKey) (*UpgradeResponse, error)
+	SendStatusRequest(address string) (*StatusResponse, error)
+}
+
+type Api struct {}
+
+func (Api) SendUpgradeRequest(data MessageData, publicKey stellarbase.PublicKey, privateKey stellarbase.PrivateKey) (*UpgradeResponse, error) {
+	dataJson, err := json.Marshal(data)
+	if err != nil {
+		return nil, err
+	}
+
+	signature := privateKey.Sign(dataJson)
+	signatureBase64 := base64.StdEncoding.EncodeToString(signature[:])
+	keyData := publicKey.KeyData()
+	publicKeyBase64 := base64.StdEncoding.EncodeToString(keyData[:])
+
+	message := Message{
+		Data:      string(dataJson),
+		PublicKey: publicKeyBase64,
+		Signature: signatureBase64,
+	}
+
+	requestJson, err := json.Marshal(message)
+	if err != nil {
+		return nil, err
+	}
+
+	url := viper.GetString("ApiRoot") + "/upgrade/upgrade"
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(requestJson))
 	req.Header.Set("Content-Type", "application/json")
 
@@ -40,8 +80,8 @@ func SendUpgradeRequest(requestJson []byte) (*UpgradeResponse, error) {
 	return &response, err
 }
 
-func SendStatusRequest(address string) (*StatusResponse, error) {
-	url := base + "/upgrade/balance"
+func (Api) SendStatusRequest(address string) (*StatusResponse, error) {
+	url := viper.GetString("ApiRoot") + "/upgrade/balance"
 	req, err := http.NewRequest("GET", url, nil)
 
 	q := req.URL.Query()

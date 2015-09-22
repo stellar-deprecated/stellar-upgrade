@@ -6,7 +6,7 @@ import (
 
 var RootCmd = &cobra.Command{
 	Use:   "stellar-upgrade",
-	Short: "stellar-upgrade upgrades your old network account to new network",
+	Short: "stellar-upgrade upgrades your old network account to the new network",
 }
 
 func Execute() {

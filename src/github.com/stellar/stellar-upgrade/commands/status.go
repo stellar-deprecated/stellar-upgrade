@@ -11,7 +11,6 @@ import (
 var status = &cobra.Command{
 	Use:   "status [address]",
 	Short: "Displays your account upgrade status",
-	Long:  "TODO",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 0 {
 			fmt.Println("[address] parameter is required.")
@@ -24,7 +23,7 @@ var status = &cobra.Command{
 			return
 		}
 
-		response, err := api.SendStatusRequest(address)
+		response, err := api.Api{}.SendStatusRequest(address)
 		if err != nil {
 			fmt.Println(err)
 			return
