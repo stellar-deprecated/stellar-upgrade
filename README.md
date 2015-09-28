@@ -11,7 +11,7 @@ Usage:
   stellar-upgrade [command]
 
 Available Commands: 
-  upgrade     Upgrade stellars to XLMs
+  upgrade     Upgrade account on old network to new
   status      Displays your account upgrade status
   help        Help about any command
 
