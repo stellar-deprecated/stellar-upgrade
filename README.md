@@ -1,17 +1,17 @@
 # stellar-upgrade
 
-Tool to upgrade old network account to new network.
+Tool to upgrade your account from STR to XLM on the much improved network.
 
 ## Usage
 
 ```
-stellar-upgrade upgrades your old network account to new network
+stellar-upgrade upgrades your old network account
 
 Usage: 
   stellar-upgrade [command]
 
 Available Commands: 
-  upgrade     Upgrade account on old network to new
+  upgrade     Upgrade account on old network
   status      Displays your account upgrade status
   help        Help about any command
 
