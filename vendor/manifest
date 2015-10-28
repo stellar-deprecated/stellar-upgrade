@@ -1,0 +1,228 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/BurntSushi/toml",
+			"repository": "https://github.com/BurntSushi/toml",
+			"revision": "056c9bc7be7190eaa7715723883caffa5f8fa3e4",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/agl/ed25519",
+			"repository": "https://github.com/agl/ed25519",
+			"revision": "278e1ec8e8a6e017cd07577924d6766039146ced",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/armon/consul-api",
+			"repository": "https://github.com/armon/consul-api",
+			"revision": "dcfedd50ed5334f96adee43fc88518a4f095e15c",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/btcsuite/btcd/btcec",
+			"repository": "https://github.com/btcsuite/btcd",
+			"revision": "7811770d3119ea4007df3167348ad6790930dad5",
+			"branch": "master",
+			"path": "/btcec"
+		},
+		{
+			"importpath": "github.com/btcsuite/fastsha256",
+			"repository": "https://github.com/btcsuite/fastsha256",
+			"revision": "302ad4db268b46f9ebda3078f6f7397f96047735",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/coreos/go-etcd/etcd",
+			"repository": "https://github.com/coreos/go-etcd",
+			"revision": "003851be7bb0694fe3cc457a49529a19388ee7cf",
+			"branch": "master",
+			"path": "/etcd"
+		},
+		{
+			"importpath": "github.com/cpuguy83/go-md2man/md2man",
+			"repository": "https://github.com/cpuguy83/go-md2man",
+			"revision": "71acacd42f85e5e82f70a55327789582a5200a90",
+			"branch": "master",
+			"path": "/md2man"
+		},
+		{
+			"importpath": "github.com/fatih/color",
+			"repository": "https://github.com/fatih/color",
+			"revision": "8640971291e54b520f781270275b7ed8762ac909",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/howeyc/gopass",
+			"repository": "https://github.com/howeyc/gopass",
+			"revision": "10b54de414cc9693221d5ff2ae14fd2fbf1b0ac1",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/inconshreveable/mousetrap",
+			"repository": "https://github.com/inconshreveable/mousetrap",
+			"revision": "76626ae9c91c4f2a10f34cad8ce83ea42c93bb75",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/kr/pretty",
+			"repository": "https://github.com/kr/pretty",
+			"revision": "e6ac2fc51e89a3249e82157fa0bb7a18ef9dd5bb",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/kr/text",
+			"repository": "https://github.com/kr/text",
+			"revision": "bb797dc4fb8320488f47bf11de07a733d7233e1f",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/magiconair/properties",
+			"repository": "https://github.com/magiconair/properties",
+			"revision": "6ac0b95f449268951dd5c100682ea687a9866ea1",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/mattn/go-isatty",
+			"repository": "https://github.com/mattn/go-isatty",
+			"revision": "7fcbc72f853b92b5720db4a6b8482be612daef24",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/mitchellh/mapstructure",
+			"repository": "https://github.com/mitchellh/mapstructure",
+			"revision": "281073eb9eb092240d33ef253c404f1cca550309",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/nullstyle/go-xdr/xdr3",
+			"repository": "https://github.com/nullstyle/go-xdr",
+			"revision": "0ed230ab0856542e23b068fa253a67f57f2d01eb",
+			"branch": "master",
+			"path": "/xdr3"
+		},
+		{
+			"importpath": "github.com/rubblelabs/ripple/crypto",
+			"repository": "https://github.com/rubblelabs/ripple",
+			"revision": "6ae22d5f71a8fe9a863ab59982d0bae36353f191",
+			"branch": "master",
+			"path": "/crypto"
+		},
+		{
+			"importpath": "github.com/russross/blackfriday",
+			"repository": "https://github.com/russross/blackfriday",
+			"revision": "d4ee3ea08bf2f1471dbf7846090d9dd931609968",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/shiena/ansicolor",
+			"repository": "https://github.com/shiena/ansicolor",
+			"revision": "d445752f6f66f9cd987722f109149f6799cdf1de",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/shurcooL/sanitized_anchor_name",
+			"repository": "https://github.com/shurcooL/sanitized_anchor_name",
+			"revision": "10ef21a441db47d8b13ebcc5fd2310f636973c77",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/spf13/cast",
+			"repository": "https://github.com/spf13/cast",
+			"revision": "ee815aaf958c707ad07547cd62150d973710f747",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/spf13/cobra",
+			"repository": "https://github.com/spf13/cobra",
+			"revision": "83773614293e6c9406454a53ce5e263500ce6e44",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/spf13/jwalterweatherman",
+			"repository": "https://github.com/spf13/jwalterweatherman",
+			"revision": "3d60171a64319ef63c78bd45bd60e6eab1e75f8b",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/spf13/pflag",
+			"repository": "https://github.com/spf13/pflag",
+			"revision": "08b1a584251b5b62f458943640fc8ebd4d50aaa5",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/spf13/viper",
+			"repository": "https://github.com/spf13/viper",
+			"revision": "1967d93db724f4a5c0e101307e96d82ff520a067",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/stellar/go-stellar-base",
+			"repository": "https://github.com/stellar/go-stellar-base",
+			"revision": "93086ff4a8a8f8b6154cdfe4344eb91b31c5174d",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/ugorji/go/codec",
+			"repository": "https://github.com/ugorji/go",
+			"revision": "f1f1a805ed361a0e078bb537e4ea78cd37dcf065",
+			"branch": "master",
+			"path": "/codec"
+		},
+		{
+			"importpath": "github.com/xordataexchange/crypt/backend",
+			"repository": "https://github.com/xordataexchange/crypt",
+			"revision": "749e360c8f236773f28fc6d3ddfce4a470795227",
+			"branch": "master",
+			"path": "/backend"
+		},
+		{
+			"importpath": "github.com/xordataexchange/crypt/config",
+			"repository": "https://github.com/xordataexchange/crypt",
+			"revision": "749e360c8f236773f28fc6d3ddfce4a470795227",
+			"branch": "master",
+			"path": "/config"
+		},
+		{
+			"importpath": "github.com/xordataexchange/crypt/encoding/secconf",
+			"repository": "https://github.com/xordataexchange/crypt",
+			"revision": "749e360c8f236773f28fc6d3ddfce4a470795227",
+			"branch": "master",
+			"path": "/encoding/secconf"
+		},
+		{
+			"importpath": "golang.org/x/crypto/cast5",
+			"repository": "https://go.googlesource.com/crypto",
+			"revision": "c8b9e6388ef638d5a8a9d865c634befdc46a6784",
+			"branch": "master",
+			"path": "/cast5"
+		},
+		{
+			"importpath": "golang.org/x/crypto/openpgp",
+			"repository": "https://go.googlesource.com/crypto",
+			"revision": "c8b9e6388ef638d5a8a9d865c634befdc46a6784",
+			"branch": "master",
+			"path": "/openpgp"
+		},
+		{
+			"importpath": "golang.org/x/crypto/ripemd160",
+			"repository": "https://go.googlesource.com/crypto",
+			"revision": "c8b9e6388ef638d5a8a9d865c634befdc46a6784",
+			"branch": "master",
+			"path": "/ripemd160"
+		},
+		{
+			"importpath": "golang.org/x/crypto/ssh/terminal",
+			"repository": "https://go.googlesource.com/crypto",
+			"revision": "c8b9e6388ef638d5a8a9d865c634befdc46a6784",
+			"branch": "master",
+			"path": "/ssh/terminal"
+		},
+		{
+			"importpath": "gopkg.in/yaml.v2",
+			"repository": "https://gopkg.in/yaml.v2",
+			"revision": "53feefa2559fb8dfa8d81baad31be332c97d6c77",
+			"branch": "v2"
+		}
+	]
+}
