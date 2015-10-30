@@ -1,28 +1,28 @@
 language: go
 go: '1.5'
+install: go get github.com/constabulary/gb/...
 script:
 - |
-  if [ -z "${TRAVIS_TAG}" ]; then
-    cp -r $GOPATH/src/github.com/stellar/stellar-upgrade/src/* $GOPATH
-    cd $GOPATH/src/github.com/stellar/stellar-upgrade
-    GOOS=windows GOARCH=386 go build -o stellar-upgrade-windows-386.exe && \
-      GOOS=windows GOARCH=amd64 go build -o stellar-upgrade-windows-amd64.exe && \ 
-      GOOS=darwin GOARCH=386 go build -o stellar-upgrade-darwin-386 && \
-      GOOS=darwin GOARCH=amd64 go build -o stellar-upgrade-darwin-amd64 && \
-      GOOS=linux GOARCH=386 go build -o stellar-upgrade-linux-386 && \
-      GOOS=linux GOARCH=amd64 go build -o stellar-upgrade-linux-amd64
+  if [ ! -z "$TRAVIS_TAG" ]; then
+    GOOS=windows GOARCH=386 gb build && \
+      GOOS=windows GOARCH=amd64 gb build && \ 
+      GOOS=darwin GOARCH=386 gb build && \
+      GOOS=darwin GOARCH=amd64 gb build && \
+      GOOS=linux GOARCH=386 gb build && \
+      GOOS=linux GOARCH=amd64 gb build && \
+      mv bin/stellar-upgrade bin/stellar-upgrade-linux-amd64
   fi
 deploy:
   provider: releases
   api_key:
     secure: X/zVdLoi+hl2P36dcQfGKw5iESmBsNzKtmqj6bXYPD8UWDDan8KAU1WBPdrd7NFI8BCOqG4bHbSGsPVHo8mN4EjqJBTe3mAQEcET82IqI2zBxDytJBwxM2qXmeMJsJLeOAhAOgt/GFlXROerVC7M7NjIqLacknu/hQIGPd1PLFTYxYJgjdUw2qafFssB4i3lYRm/j/bdBBMWRSize8HcxeZzbLoi/TSoCcgS6kaVOpaDgJ9idl3/U/eqyevFieC7rEzCZdswNv/sjK29H+nkwpuWpUdkaeVYszWoOXPhEH3dFx0fWXGH4heLb7nLs45lNde8rQXT0edPjUMg5HNYeLBlAVTeo1XjmpVh/qwFxo+hBy4QGbxRY0TGt/LZalU2ywKjQLG18h/E6TbKUXTT7rR1wNDAxLw4X5l1Z5dnLmG36MgR7orQejmfc+NcHVhzLrq3aFmNXmcmgK3akNzPrlyNwM7pmtGNeGBL0yRITAmMC2m2j4pNp5SJNr++Crw5LqbpA5FFhXSFvHGzYr+pYjNnu0v2nnWOuoGkpoIXY3I7XFml/dlpAn1BXp1z21IqHdWzsCETWRX6k1A+oVo/Of8IB/9VtQ2ZW0Rav6atXPKzYoxXK+2QpKhmpoD+NKAQlSPJZc4LsOm4wkWNDycYjVczrXFNgkHnWIDvWU8iXGg=
   file:
-    - "stellar-upgrade-windows-386.exe"
-    - "stellar-upgrade-windows-amd64.exe"
-    - "stellar-upgrade-darwin-386"
-    - "stellar-upgrade-darwin-amd64"
-    - "stellar-upgrade-linux-386"
-    - "stellar-upgrade-linux-amd64"
+    - "./bin/stellar-upgrade-windows-386.exe"
+    - "./bin/stellar-upgrade-windows-amd64.exe"
+    - "./bin/stellar-upgrade-darwin-386"
+    - "./bin/stellar-upgrade-darwin-amd64"
+    - "./bin/stellar-upgrade-linux-386"
+    - "./bin/stellar-upgrade-linux-amd64"
   skip_cleanup: true
   on:
     repo: stellar/stellar-upgrade
