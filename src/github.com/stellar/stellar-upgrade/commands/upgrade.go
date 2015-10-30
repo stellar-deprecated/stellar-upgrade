@@ -5,7 +5,7 @@ import (
 
 	"github.com/rubblelabs/ripple/crypto"
 	"github.com/spf13/cobra"
-	"github.com/stellar/go-stellar-base"
+	"github.com/stellar/go-stellar-base/keypair"
 	"github.com/stellar/stellar-upgrade/api"
 )
 
@@ -14,18 +14,18 @@ var upgrade = &cobra.Command{
 	Short: "Upgrade the old network account to the new network",
 	Run: func(cmd *cobra.Command, args []string) {
 		updateCommand := UpdateCommand{
-			Input: Input{},	
+			Input:     Input{},
 			ApiObject: api.Api{},
 		}
 		message := updateCommand.Run()
 		if message != "" {
-			fmt.Println(message)	
+			fmt.Println(message)
 		}
 	},
 }
 
 type UpdateCommand struct {
-	Input CommandInput
+	Input     CommandInput
 	ApiObject api.NetworkApi
 }
 
@@ -35,23 +35,23 @@ func (command UpdateCommand) Run() string {
 	if err != nil {
 		return "Your old network account secret seed is incorrect."
 	}
-	var rawSeed stellarbase.RawSeed
+	var rawSeed [32]byte
 	copy(rawSeed[:], oldNetworkSeedRaw[1:len(oldNetworkSeedRaw)-2]) // Payload
 
-	publicKey, privateKey, err := stellarbase.GenerateKeyFromRawSeed(rawSeed)
+	kp, err := keypair.FromRawSeed(rawSeed)
 	if err != nil {
 		return "Error generating signing keys from your secret seed"
 	}
 
-	oldNetworkAddress := publicKey.Address()
+	oldNetworkAddress := kp.Address()
 	newNetworkAddress := command.Input.GetNewNetworkAddressFromConsole()
 	messageData := api.MessageData{NewAddress: newNetworkAddress}
 	confirmed := command.Input.GetConfirmationFromConsole(oldNetworkAddress, messageData.NewAddress)
 	if !confirmed {
-		return "Exiting...";
+		return "Exiting..."
 	}
 
-	response, err := command.ApiObject.SendUpgradeRequest(messageData, publicKey, privateKey)
+	response, err := command.ApiObject.SendUpgradeRequest(messageData, kp)
 	if err != nil {
 		return "Error building or sending request to upgrade API."
 	}

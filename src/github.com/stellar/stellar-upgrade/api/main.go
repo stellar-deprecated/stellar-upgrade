@@ -8,8 +8,9 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/stellar/go-stellar-base"
 	"github.com/spf13/viper"
+	"github.com/stellar/go-stellar-base/keypair"
+	"github.com/stellar/go-stellar-base/strkey"
 )
 
 type MessageData struct {
@@ -35,22 +36,26 @@ type StatusResponse struct {
 }
 
 type NetworkApi interface {
-	SendUpgradeRequest(data MessageData, publicKey stellarbase.PublicKey, privateKey stellarbase.PrivateKey) (*UpgradeResponse, error)
+	SendUpgradeRequest(data MessageData, kp keypair.KP) (*UpgradeResponse, error)
 	SendStatusRequest(address string) (*StatusResponse, error)
 }
 
-type Api struct {}
+type Api struct{}
 
-func (Api) SendUpgradeRequest(data MessageData, publicKey stellarbase.PublicKey, privateKey stellarbase.PrivateKey) (*UpgradeResponse, error) {
+func (Api) SendUpgradeRequest(data MessageData, kp keypair.KP) (*UpgradeResponse, error) {
 	dataJson, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
 	}
 
-	signature := privateKey.Sign(dataJson)
+	signature, err := kp.Sign(dataJson)
+	if err != nil {
+		return nil, err
+	}
+
 	signatureBase64 := base64.StdEncoding.EncodeToString(signature[:])
-	keyData := publicKey.KeyData()
-	publicKeyBase64 := base64.StdEncoding.EncodeToString(keyData[:])
+	keyData := strkey.MustDecode(strkey.VersionByteAccountID, kp.Address())
+	publicKeyBase64 := base64.StdEncoding.EncodeToString(keyData)
 
 	message := Message{
 		Data:      string(dataJson),
