@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	viper.SetDefault("ApiRoot", "http://localhost:3001")
+	viper.SetDefault("ApiRoot", "https://api.stellar.org")
 	commands.Execute()
 }
