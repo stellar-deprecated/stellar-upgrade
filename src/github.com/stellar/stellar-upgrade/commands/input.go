@@ -28,7 +28,7 @@ func (Input) GetNewNetworkAddressFromConsole() string {
 
 func (Input) GetConfirmationFromConsole(oldNetworkAddress, newNetworkAddress string) bool {
 	fmt.Printf("Please confirm your addresses are correct:\n")
-	fmt.Printf("Old network address: %s\n", Cyan(oldNetworkAddress))
+	//fmt.Printf("Old network address: %s\n", Cyan(oldNetworkAddress))
 	fmt.Printf("New network address: %s\n", Cyan(newNetworkAddress))
 	fmt.Printf("Correct? [y/N] ")
 
