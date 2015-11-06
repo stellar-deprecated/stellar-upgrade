@@ -19,17 +19,19 @@ Alternatively, you can build the binary yourself. [gb](http://getgb.io) is used 
 ## Usage
 Remember to make sure that you have the correct name of the binary.
 
-### Check the upgrade status of an account
-```shell
-./stellar-upgrade-[binary-suffix] status ganVp9o5emfzpwrG5QVUXqMv8AgLcdvySb
-```
-
 ### Upgrade an account
 ```shell
 ./stellar-upgrade-[binary-suffix] upgrade
 ```
 
-### Command line help
+No additional command line arguments needed. arguments needed to run this
+
+### Check the upgrade status of an account
+```shell
+./stellar-upgrade-[binary-suffix] status ganVp9o5emfzpwrG5QVUXqMv8AgLcdvySb
+```
+
+### Command line help message
 ```shell
 stellar-upgrade upgrades your old network account
 
@@ -46,4 +48,15 @@ Flags:
 
 
 Use "stellar-upgrade help [command]" for more information about a command.
+```
+
+### Troubleshooting
+If you get a "Permission denied" error similar to this:
+```shell
+-bash: ./stellar-upgrade-[binary-suffix]: Permission denied
+```
+
+Add `execute` permissions to the file using the following command:
+```shell
+chmod +x stellar-upgrade-[binary-suffix]
 ```
