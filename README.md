@@ -5,14 +5,14 @@ Tool to upgrade your account from STR to XLM on the much improved network.
 ## Downloading the tool
 [Prebuilt binaries](https://github.com/stellar/stellar-upgrade/releases) of the upgrade tool are available are on the [releases page](https://github.com/stellar/stellar-upgrade/releases).
 
-| Platform       | Binary file name                  |
-|----------------|-----------------------------------|
-| Mac OSX 32 bit | stellar-upgrade-darwin-386        |
-| Mac OSX 64 bit | stellar-upgrade-darwin-amd64      |
-| Linux 32 bit   | stellar-upgrade-linux-386         |
-| Linux 64 bit   | stellar-upgrade-linux-amd64       |
-| Windows 32 bit | stellar-upgrade-windows-386.exe   |
-| Windows 64 bit | stellar-upgrade-windows-amd64.exe |
+| Platform       | Binary file name                                                                         |
+|----------------|------------------------------------------------------------------------------------------|
+| Mac OSX 32 bit | [stellar-upgrade-darwin-386](https://github.com/stellar/stellar-upgrade/releases)        |
+| Mac OSX 64 bit | [stellar-upgrade-darwin-amd64](https://github.com/stellar/stellar-upgrade/releases)      |
+| Linux 32 bit   | [stellar-upgrade-linux-386](https://github.com/stellar/stellar-upgrade/releases)         |
+| Linux 64 bit   | [stellar-upgrade-linux-amd64](https://github.com/stellar/stellar-upgrade/releases)       |
+| Windows 32 bit | [stellar-upgrade-windows-386.exe](https://github.com/stellar/stellar-upgrade/releases)   |
+| Windows 64 bit | [stellar-upgrade-windows-amd64.exe](https://github.com/stellar/stellar-upgrade/releases) |
 
 Alternatively, you can build the binary yourself. [gb](http://getgb.io) is used for building this upgrade tool.
 
@@ -28,7 +28,18 @@ No additional command line arguments needed. arguments needed to run this
 
 ### Check the upgrade status of an account
 ```shell
-./stellar-upgrade-[binary-suffix] status ganVp9o5emfzpwrG5QVUXqMv8AgLcdvySb
+./stellar-upgrade-[binary-suffix] status gYourOldNetworkAddresszpwrG5QVUXqM
+```
+
+### Troubleshooting
+If you get a "Permission denied" error similar to this:
+```shell
+-bash: ./stellar-upgrade-[binary-suffix]: Permission denied
+```
+
+Use the following command to grant permission to run the file.
+```shell
+chmod +x stellar-upgrade-[binary-suffix]
 ```
 
 ### Command line help message
@@ -48,15 +59,4 @@ Flags:
 
 
 Use "stellar-upgrade help [command]" for more information about a command.
-```
-
-### Troubleshooting
-If you get a "Permission denied" error similar to this:
-```shell
--bash: ./stellar-upgrade-[binary-suffix]: Permission denied
-```
-
-Add `execute` permissions to the file using the following command:
-```shell
-chmod +x stellar-upgrade-[binary-suffix]
 ```
