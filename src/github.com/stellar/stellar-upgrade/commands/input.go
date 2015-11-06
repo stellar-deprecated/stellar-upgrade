@@ -12,15 +12,16 @@ type CommandInput interface {
 	GetConfirmationFromConsole(oldNetworkAddress, newNetworkAddress string) bool
 }
 
-type Input struct {}
+type Input struct{}
+
 func (Input) GetOldNetworkSeedFromConsole() string {
 	fmt.Printf("Enter your %s account %s: [input will be hidden] ", Cyan("old network"), Cyan("secret seed"))
-	oldNetworkSeedBytes := gopass.GetPasswd() 
+	oldNetworkSeedBytes := gopass.GetPasswd()
 	return string(oldNetworkSeedBytes)
 }
 
 func (Input) GetNewNetworkAddressFromConsole() string {
-	fmt.Printf("Enter your %s account %s: ", Cyan("new network"), Cyan("address"))
+	fmt.Printf("Enter the %s that your lumens will be sent to: ", Cyan("new network address"))
 	var newNetworkAddress string
 	fmt.Scanln(&newNetworkAddress)
 	return newNetworkAddress
@@ -34,7 +35,6 @@ func (Input) GetConfirmationFromConsole(oldNetworkAddress, newNetworkAddress str
 
 	var confirm string
 	fmt.Scanln(&confirm)
-	
 
 	if confirm != "y" && confirm != "Y" {
 		return false

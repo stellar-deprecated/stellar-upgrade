@@ -43,6 +43,13 @@ func (command UpdateCommand) Run() string {
 		return "Error generating signing keys from your secret seed"
 	}
 
+	fmt.Println("The stellar network uses a new format for public and secret keys.")
+	fmt.Println("The new format for the seed you pasted above is:")
+	fmt.Println("")
+	fmt.Printf("Public Key: %s\n", kp.Address())
+	fmt.Printf("Secret Key: %s\n", kp.(*keypair.Full).Seed())
+	fmt.Println("")
+
 	oldNetworkAddress := kp.Address()
 	newNetworkAddress := command.Input.GetNewNetworkAddressFromConsole()
 	messageData := api.MessageData{NewAddress: newNetworkAddress}
