@@ -24,7 +24,8 @@ Remember to make sure that you have the correct name of the binary.
 ./stellar-upgrade-[binary-suffix] upgrade
 ```
 
-No additional command line arguments needed. arguments needed to run this
+`upgrade` is the only argument needed when starting the tool in the command line.
+The tool will ask you for the old secret key once you've started the tool.
 
 ### Check the upgrade status of an account
 ```shell
