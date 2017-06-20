@@ -2,6 +2,8 @@
 
 Tool to upgrade your account from STR to XLM on the much improved network.
 
+Web version available here: https://stellar.github.io/stellar-upgrade-web/
+
 ## Downloading the tool
 [Prebuilt binaries](https://github.com/stellar/stellar-upgrade/releases) of the upgrade tool are available are on the [releases page](https://github.com/stellar/stellar-upgrade/releases).
 
